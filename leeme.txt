@@ -1,0 +1,47 @@
+Documentación para "Remote UCI"
+-------------------------------
+Daniel José Queraltó 2020
+
+El programa "Remote UCI" permite ejecutar de forma remota un motor de ajedrez basado en el protocolo UCI (Universal Chess Interface). Esto significa que se puede usar un motor de ajedrez que se ejecuta en un servidor remoto, como si estuviera instalado localmente en tu computadora.
+
+
+Cómo usar "Remote UCI"
+
+Configuración Inicial: Antes de usar el programa, asegúrate de tener un archivo llamado remoteuci.ini en la misma carpeta que el programa. Este archivo puede contener parámetros de configuración que se cargarán al inicio del programa.
+
+Modo Servidor: Si deseas ejecutar el programa en modo servidor (para ofrecer un motor de ajedrez a otros usuarios), deberás especificar la ruta del motor UCI con el argumento -E. Por ejemplo:
+
+	RemoteUCI.exe -E[path_del_motor]
+
+Modo Cliente: Si deseas conectar tu GUI de ajedrez a un motor remoto, deberás especificar la IP del servidor remoto con el argumento -I. Por ejemplo:
+
+	RemoteUCI.exe -I[IP_del_servidor]
+
+
+Parámetros Adicionales:
+        -P: Especifica el puerto TCP/IP que se utilizará (por defecto es 10000).
+        -Q: Silencia la salida en la consola.
+        -N: Inicia el motor y nunca lo detiene.
+        -R: Si el cliente se desconecta, el análisis actual sigue en marcha. Con una nueva conexión, el cliente podrá retomarlo.
+
+
+Archivo remoteuci.ini
+
+Este archivo permite configurar comportamientos adicionales. Puedes configurar:
+
+Reemplazar Comandos: Si deseas que ciertos comandos enviados por el cliente sean reemplazados antes de ser enviados al motor, usa el bloque REPLACE + comando original + comando que se envía al módulo. Por ejemplo:
+
+REPLACE
+setoption name Hash value 65536
+setoption name Hash value 128
+
+Comandos Iniciales: Si deseas que ciertos comandos sean enviados al motor justo después de que se inicie, usa el bloque START. Por ejemplo:
+
+START
+uci
+
+
+Consideraciones
+
+Asegúrate de tener los puertos apropiados abiertos en tu firewall si estás ejecutando el programa en modo servidor.
+Ten en cuenta que la comunicación entre el cliente y el servidor no está cifrada. Es posible que quieras considerar medidas adicionales de seguridad si vas a usarlo en redes públicas o inseguras.
