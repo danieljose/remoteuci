@@ -40,6 +40,30 @@ Initial Commands: If you wish certain commands to be sent to the engine right af
 START
 uci
 
+## Example
+
+On the computer with ChessBase or another UCI-compatible program installed, create a folder that includes both remoteuci.exe and remoteuci.ini. The contents of remoteuci.ini can be:
+
+	-p2051
+	-i192.168.1.33
+
+This indicates that it should establish a connection to the computer with the IP address 192.168.1.33 using port 2051.
+
+On the other computer, which has the IP address 192.168.1.33, create a folder containing remoteuci.exe, stockfish.exe, and remoteuci.ini. The content of this remoteuci.ini might be:
+
+	replace
+	quit
+	stop
+
+This example configuration ensures that the engine won't halt; it will persistently run. The purpose is to prevent the need to restart the engine every time one analysis stops and another begins. Essentially, it substitutes the UCI command "quit" with the command "stop".
+
+With all configurations set, initiate the engine on the remote computer using:
+
+	remoteuci.exe -p2051 -n -q -estockfish.exe
+
+For convenience, I have this command saved in a .bat file.
+
+Lastly, configure a new engine in ChessBase that points to the local remoteuci.exe file. To ChessBase, it will seem as if it's interfacing with the remote Stockfish engine.
 
 ## Considerations
 
