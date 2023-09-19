@@ -7,9 +7,9 @@ The "Remote UCI" program allows you to remotely run a chess engine based on the 
 
 ## How to use "Remote UCI"
 
-Initial Setup: Before using the program, make sure you have a file named remoteuci.ini in the same folder as the program. This file can contain configuration parameters that will be loaded at the start of the program.
+Initial Setup: Before using the program, make sure you have a file named remoteuci.ini in the same folder as the remoteuci.exe program. This file can contain configuration parameters that will be loaded at the start of the program.
 
-Server Mode: If you want to run the program in server mode (to offer a chess engine to other users), you will need to specify the UCI engine path with the -E argument. For example:
+Server Mode: If you want to run the program in server mode (to offer the chess engine), you will need to specify the UCI engine executable path with the -E argument. For example:
 
 	RemoteUCI.exe -E[path_of_the_engine]
 
